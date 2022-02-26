@@ -154,6 +154,7 @@
     <ClCompile Include="H:\DataStructures\test_ll_pop.c" />
     <ClCompile Include="H:\DataStructures\test_ll_remove.c" />
     <ClCompile Include="H:\DataStructures\test_ll_reverse.c" />
+    <ClCompile Include="test_dll_insert_after.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
