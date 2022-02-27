@@ -139,21 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="H:\DataStructures\clove.h" />
-    <ClInclude Include="H:\DataStructures\doubly_linked_lists.h" />
-    <ClInclude Include="H:\DataStructures\linked_lists.h" />
+    <ClInclude Include="clove.h" />
+    <ClInclude Include="doubly_linked_lists.h" />
+    <ClInclude Include="linked_lists.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="H:\DataStructures\doubly_linked_lists.c" />
-    <ClCompile Include="H:\DataStructures\linked_lists.c" />
-    <ClCompile Include="H:\DataStructures\main.c" />
-    <ClCompile Include="H:\DataStructures\test_dll_append.c" />
-    <ClCompile Include="H:\DataStructures\test_dll_remove.c" />
-    <ClCompile Include="H:\DataStructures\test_ll_append.c" />
-    <ClCompile Include="H:\DataStructures\test_ll_get_tail.c" />
-    <ClCompile Include="H:\DataStructures\test_ll_pop.c" />
-    <ClCompile Include="H:\DataStructures\test_ll_remove.c" />
-    <ClCompile Include="H:\DataStructures\test_ll_reverse.c" />
+    <ClCompile Include="doubly_linked_lists.c" />
+    <ClCompile Include="linked_lists.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="test_dll_append.c" />
+    <ClCompile Include="test_dll_remove.c" />
+    <ClCompile Include="test_ll_append.c" />
+    <ClCompile Include="test_ll_get_tail.c" />
+    <ClCompile Include="test_ll_pop.c">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="test_ll_remove.c" />
+    <ClCompile Include="test_ll_reverse.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
