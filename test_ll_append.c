@@ -1,43 +1,54 @@
-#define CLOVE_SUITE_NAME ll_Append
+#define CLOVE_SUITE_NAME LL_APPEND
 #include "clove.h"
+
+
 #include "linked_lists.h"
 
-string_item_t* my_linked_list;
+ll_string_item* my_list;
+
+
 
 CLOVE_SUITE_SETUP() {
-	my_linked_list = NULL;
+
+	my_list = NULL;
 }
 
 CLOVE_SUITE_TEARDOWN() {
-	free(my_linked_list);
+	ll_string_item_list_free(&my_list);
 }
 
 CLOVE_TEST(NullItemToEmptyList)
 {
-	string_item_t* result = ll_list_append(&my_linked_list, NULL);
+	ll_string_item* result = ll_append(&my_list, NULL);
 
 	CLOVE_NULL(result);
 }
 
-CLOVE_TEST(ItemTo1ItemList)
+CLOVE_TEST(1Item)
 {
-	ll_list_append_string(&my_linked_list, "Ciao");
-
-	list_node_t* result = ll_list_get_tail(&my_linked_list);
-
+	ll_string_item* result = ll_list_append_string(&my_list, "000");
+	
+	
+	CLOVE_PTR_EQ(result, my_list);
 	CLOVE_NOT_NULL(result);
-	
+
 }
 
-CLOVE_TEST(ToEmptyList)
+CLOVE_TEST(3Item)
 {
-	string_item_t* result = ll_list_append_string(&my_linked_list, "Ciao");
+	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
+	ll_string_item* result2 = ll_list_append_string(&my_list, "002");
 
-	CLOVE_STRING_EQ("Ciao", result->string);
-	CLOVE_PTR_EQ(result, my_linked_list);
+	CLOVE_PTR_EQ(result0, my_list);
+	CLOVE_PTR_EQ(result1, result0->node.next);
+	CLOVE_PTR_EQ(result2, result1->node.next);
+	CLOVE_NULL(result2->node.next);
 }
-	
-	
+
+
+
+
 
 	
 

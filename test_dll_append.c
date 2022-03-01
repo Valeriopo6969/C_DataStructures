@@ -1,76 +1,87 @@
-#define CLOVE_SUITE_NAME dll_Append
+#define CLOVE_SUITE_NAME DLL_APPEND
 #include "clove.h"
 #include "doubly_linked_lists.h"
 
-dll_string_item* my_dlinked_list;
+#include "test_utils.h"
+
+dll_string_item* my_list;
 
 CLOVE_SUITE_SETUP() {
-	my_dlinked_list = NULL;
+	my_list = NULL;
 }
 
 CLOVE_SUITE_TEARDOWN() {
-	free(my_dlinked_list);
+
+	dll_string_item_list_free(&my_list);
 }
 
-CLOVE_TEST(NullItem)
+CLOVE_TEST(NullNode)
 {
-	dll_node* result = dll_append(&my_dlinked_list, NULL);
+	dll_string_item* result = dll_append(&my_list, NULL);
 
 	CLOVE_NULL(result);
 }
 
 CLOVE_TEST(1Item)
 {
+	dll_string_item* result = dll_append_string(&my_list, "000");
 
-	dll_append_string(&my_dlinked_list, "1");
-	
-	CLOVE_STRING_EQ("1", my_dlinked_list->string);
-	CLOVE_NOT_NULL(my_dlinked_list);
+	CLOVE_STRING_EQ("000", my_list->string);
+	CLOVE_NOT_NULL(my_list);
+	CLOVE_PTR_EQ(result, my_list);
 }
 
 CLOVE_TEST(3Item)
 {
-	dll_append_string(&my_dlinked_list, "000");
-	dll_append_string(&my_dlinked_list, "001");
-	dll_append_string(&my_dlinked_list, "002");
+	dll_string_item* result0 = dll_append_string(&my_list, "000");
+	dll_string_item* result1 = dll_append_string(&my_list, "001");
+	dll_string_item* result2 = dll_append_string(&my_list, "002");
 
-	int length = dll_list_get_length(&my_dlinked_list);
-	CLOVE_INT_EQ(3, length);
+	CLOVE_PTR_EQ(result0, result1->node.prev);
+	CLOVE_PTR_EQ(result1, result0->node.next);
+	CLOVE_PTR_EQ(result1, result2->node.prev);
+	CLOVE_PTR_EQ(result2, result1->node.next);
 
-	dll_string_item* result0 = dll_list_pop(&my_dlinked_list);
-	dll_string_item* result1 = dll_list_pop(&my_dlinked_list);
-	dll_string_item* result2 = dll_list_pop(&my_dlinked_list);
-
-	CLOVE_STRING_EQ("000", result0->string);
-	CLOVE_STRING_EQ("001", result1->string);
-	CLOVE_STRING_EQ("002", result2->string);
-
-	free(result0);
-	free(result1);
-	free(result2);
+	CLOVE_NULL(result0->node.prev);
+	CLOVE_NULL(result2->node.next);
 }
 
-CLOVE_TEST(shuffle)
+CLOVE_TEST(Shuffle) //creare una apposita test suite
 {
-	dll_append_string(&my_dlinked_list, "000");
-	dll_append_string(&my_dlinked_list, "001");
-	dll_append_string(&my_dlinked_list, "002");
-	dll_append_string(&my_dlinked_list, "003");
-	
+	dll_append_string(&my_list, "000");
+	dll_append_string(&my_list, "001");
+	dll_append_string(&my_list, "002");
+	dll_append_string(&my_list, "003");
 
-	dll_list_shuffle(&my_dlinked_list);
+	dll_shuffle(&my_list);
 
-	dll_string_item* result0 = dll_get_node_at(&my_dlinked_list,0);
-	dll_string_item* result1 = dll_get_node_at(&my_dlinked_list,1);
-	dll_string_item* result2 = dll_get_node_at(&my_dlinked_list,2);
-	dll_string_item* result3 = dll_get_node_at(&my_dlinked_list,3);
+	dll_string_item* result0 = dll_get_node_at(&my_list, 0);
+	dll_string_item* result1 = dll_get_node_at(&my_list, 1);
+	dll_string_item* result2 = dll_get_node_at(&my_list, 2);
+	dll_string_item* result3 = dll_get_node_at(&my_list, 3);
 
 	CLOVE_STRING_EQ("001", result0->string);
 	CLOVE_STRING_EQ("003", result1->string);
 	CLOVE_STRING_EQ("000", result2->string);
 	CLOVE_STRING_EQ("002", result3->string);
-
 }
+
+
+
+
+	
+
+	
+
+
+
+	
+
+	
+
+
+
+
 	
 
 

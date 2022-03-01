@@ -1,67 +1,73 @@
-#define CLOVE_SUITE_NAME ll_Reverse
+#define CLOVE_SUITE_NAME LL_REVERSE
 #include "clove.h"
+
+
 #include "linked_lists.h"
 
-string_item_t* my_linked_list;
+ll_string_item* my_list;
+
+
 
 CLOVE_SUITE_SETUP() {
-	my_linked_list = NULL;
+
+	my_list = NULL;
 }
 
 CLOVE_SUITE_TEARDOWN() {
-	free(my_linked_list);
+	ll_string_item_list_free(&my_list);
 }
 
 CLOVE_TEST(EmptyList)
 {
-	int result = ll_list_reverse(&my_linked_list);
+	int result = ll_list_reverse(&my_list);
 
 	CLOVE_IS_FALSE(result);
 }
 
 CLOVE_TEST(1ItemList)
 {
-	ll_list_append_string(&my_linked_list, "Ciao");
+	ll_list_append_string(&my_list, "000");
 
-	int result = ll_list_reverse(&my_linked_list);
+	int result = ll_list_reverse(&my_list);
 
 	CLOVE_IS_TRUE(result);
-	CLOVE_STRING_EQ("Ciao", my_linked_list->string);
+	CLOVE_STRING_EQ("000", my_list->string);
 }
 
 CLOVE_TEST(2ItemList)
 {
-	ll_list_append_string(&my_linked_list, "Ciao, ");
-	ll_list_append_string(&my_linked_list, "Come va?");
+	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
 
-	ll_list_reverse(&my_linked_list);
-	
-	string_item_t* result = ll_list_get_tail(&my_linked_list);
-	
-	CLOVE_STRING_EQ("Come va?", my_linked_list->string);
-	CLOVE_STRING_EQ("Ciao, ", result->string);
+	ll_list_reverse(&my_list);
+
+	CLOVE_STRING_EQ(result1->string, my_list->string);
+	CLOVE_PTR_EQ(result0, my_list->node.next);
 }
 
 CLOVE_TEST(5ItemList)
 {
-	ll_list_append_string(&my_linked_list, "000");
-	ll_list_append_string(&my_linked_list, "001");
-	ll_list_append_string(&my_linked_list, "002");
-	ll_list_append_string(&my_linked_list, "003");
-	ll_list_append_string(&my_linked_list, "004");
+	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
+	ll_string_item* result2 = ll_list_append_string(&my_list, "002");
+	ll_string_item* result3 = ll_list_append_string(&my_list, "003");
+	ll_string_item* result4 = ll_list_append_string(&my_list, "004");
 
-	ll_list_reverse(&my_linked_list);
+	ll_list_reverse(&my_list);
 
-	string_item_t* result0 = ll_list_pop(&my_linked_list);
-	string_item_t* result1 = ll_list_pop(&my_linked_list);
-	string_item_t* result2 = ll_list_pop(&my_linked_list);
-	string_item_t* result3 = ll_list_pop(&my_linked_list);
-	string_item_t* result4 = ll_list_pop(&my_linked_list);
-
-	CLOVE_STRING_EQ("004", result0->string);
-	CLOVE_STRING_EQ("003", result1->string);
-	CLOVE_STRING_EQ("002", result2->string);
-	CLOVE_STRING_EQ("001", result3->string);
-	CLOVE_STRING_EQ("000", result4->string);
-	
+	CLOVE_PTR_EQ(result4, my_list);
+	CLOVE_PTR_EQ(result3, result4->node.next);
+	CLOVE_PTR_EQ(result2, result3->node.next);
+	CLOVE_PTR_EQ(result1, result2->node.next);
+	CLOVE_PTR_EQ(result0, result1->node.next);
+	CLOVE_NULL(result0->node.next);
 }
+
+
+	
+
+
+
+	
+	
+

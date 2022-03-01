@@ -1,31 +1,33 @@
-#define CLOVE_SUITE_NAME ll_GetTail
+#define CLOVE_SUITE_NAME LL_GET_TAIL
 #include "clove.h"
+
+
 #include "linked_lists.h"
 
-string_item_t* my_linked_list;
+ll_string_item* my_list;
 
 CLOVE_SUITE_SETUP() {
-	my_linked_list = NULL;
+	my_list = NULL;
 }
 
 CLOVE_SUITE_TEARDOWN() {
-	free(my_linked_list);
+	ll_string_item_list_free(&my_list);
 }
 
 CLOVE_TEST(FromEmptyList)
 {
-	list_node_t* expected = ll_list_get_tail(&my_linked_list);
+	ll_node* expected = ll_get_tail(&my_list);
 
 	CLOVE_NULL(expected);
 }
 	
 CLOVE_TEST(From1ItemList)
 {
-	ll_list_append_string(&my_linked_list, "Ciao");
+	ll_list_append_string(&my_list, "000");
 
-	string_item_t* result = ll_list_get_tail(&my_linked_list);
+	ll_string_item* result = ll_get_tail(&my_list);
 
-	CLOVE_STRING_EQ("Ciao", result->string);
+	CLOVE_STRING_EQ("000", result->string);
 	CLOVE_NOT_NULL(result);
 }
 

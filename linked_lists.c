@@ -1,9 +1,25 @@
-#include "linked_lists.h"
 #include <stdio.h>
- list_node_t* ll_list_get_tail(list_node_t**head)
+#include <stddef.h>
+#include <stdlib.h>
+
+#define TEST_DEBUG
+#include "linked_lists.h"
+
+void ll_list_free(ll_node** head)
 {
-	 list_node_t* current_node = *head;
-	 list_node_t* last_node = NULL;
+	ll_string_item* to_free;
+	while ((to_free = ll_pop(head)))
+	{
+		free(to_free);
+		to_free = NULL;
+		
+	}
+}
+
+ ll_node* ll_get_tail(ll_node**head)
+{
+	 ll_node* current_node = *head;
+	 ll_node* last_node = NULL;
 
 	while (current_node)
 	{
@@ -14,9 +30,9 @@
 	return last_node;
 };
 
- list_node_t* ll_list_pop(list_node_t** head)
+ ll_node* ll_pop(ll_node** head)
 {
-	list_node_t* current_node = *head;
+	ll_node* current_node = *head;
 	if (!current_node)
 	{
 		return NULL;
@@ -28,11 +44,11 @@
 	return current_node;
 }
 
-list_node_t* ll_list_append(list_node_t** head,  list_node_t* item)
+ll_node* ll_append(ll_node** head,  ll_node* item)
 {
 	if (!item) return NULL;
 
-	list_node_t* tail = ll_list_get_tail(head);
+	ll_node* tail = ll_get_tail(head);
 	if (!tail)
 	{
 		*head = item;
@@ -46,11 +62,11 @@ list_node_t* ll_list_append(list_node_t** head,  list_node_t* item)
 	return item;
 }
 
-list_node_t* ll_list_remove(list_node_t** head, list_node_t* item)
+ll_node* ll_remove(ll_node** head, ll_node* item)
 {
 	if (!item || !*head) return NULL;
 
-	list_node_t* current_node = *head;
+	ll_node* current_node = *head;
 
 	if (current_node == item)
 	{
@@ -59,7 +75,7 @@ list_node_t* ll_list_remove(list_node_t** head, list_node_t* item)
 		return current_node;
 	}
 
-	list_node_t* last_node = current_node;
+	ll_node* last_node = current_node;
 	current_node = current_node->next;
 
 	while (current_node)
@@ -77,13 +93,13 @@ list_node_t* ll_list_remove(list_node_t** head, list_node_t* item)
 	return NULL;
 }
 
-int ll_list_reverse(list_node_t** head)
+int ll_list_reverse(ll_node** head)
 {
 	if (!*head) return 0;
 
-	list_node_t* current_node = *head;
-	list_node_t* last_node = NULL;
-	list_node_t* next_node = NULL;
+	ll_node* current_node = *head;
+	ll_node* last_node = NULL;
+	ll_node* next_node = NULL;
 
 	while (current_node)
 	{
@@ -98,9 +114,9 @@ int ll_list_reverse(list_node_t** head)
 	return 1;
 }
 
-string_item_t* ll_string_item_new(const char* string)
+ll_string_item* ll_string_item_new(const char* string)
 {
-	string_item_t* item = malloc(sizeof(string_item_t));
+	ll_string_item* item = malloc(sizeof(ll_string_item));
 	if (!item)
 	{
 		return NULL;

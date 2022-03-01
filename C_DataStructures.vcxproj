@@ -142,11 +142,13 @@
     <ClInclude Include="clove.h" />
     <ClInclude Include="doubly_linked_lists.h" />
     <ClInclude Include="linked_lists.h" />
+    <ClInclude Include="test_utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="doubly_linked_lists.c" />
     <ClCompile Include="linked_lists.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="test_correct_mem.c" />
     <ClCompile Include="test_dll_append.c" />
     <ClCompile Include="test_dll_remove.c" />
     <ClCompile Include="test_ll_append.c" />
@@ -156,6 +158,7 @@
     </ClCompile>
     <ClCompile Include="test_ll_remove.c" />
     <ClCompile Include="test_ll_reverse.c" />
+    <ClCompile Include="test_utils.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,9 @@
     <ClInclude Include="linked_lists.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="test_utils.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="doubly_linked_lists.c">
@@ -54,6 +57,12 @@
       <Filter>File di origine</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_reverse.c">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="test_utils.c">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="test_correct_mem.c">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

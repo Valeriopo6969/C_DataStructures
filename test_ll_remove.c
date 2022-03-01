@@ -1,64 +1,67 @@
-#define CLOVE_SUITE_NAME ll_Remove
+#define CLOVE_SUITE_NAME LL_REMOVE
 #include "clove.h"
+
 #include "linked_lists.h"
 
-string_item_t* my_linked_list;
+ll_string_item* my_list;
 
 CLOVE_SUITE_SETUP() {
-	my_linked_list = NULL;
+	my_list = NULL;
 }
 
 CLOVE_SUITE_TEARDOWN() {
-	free(my_linked_list);
+	ll_string_item_list_free(&my_list);
 }
+
 
 CLOVE_TEST(NullItemFromEmptyList)
 {
-	list_node_t* result = ll_list_remove(&my_linked_list, NULL);
+	ll_node* result = ll_remove(&my_list, NULL);
 
 	CLOVE_NULL(result);
 }
 
 CLOVE_TEST(ItemFromEmptyList)
 {
-	list_node_t* result = ll_list_remove(&my_linked_list, "Ciao");
+	ll_node* result = ll_remove(&my_list, "000");
 
 	CLOVE_NULL(result);
 }
 
 CLOVE_TEST(ItemFrom1ItemList)
 {
-	string_item_t* test000 = ll_list_append_string(&my_linked_list, "test000");
-	string_item_t* result = ll_list_remove(&my_linked_list, test000);
+	ll_string_item* test000 = ll_list_append_string(&my_list, "000");
+	ll_string_item* result = ll_remove(&my_list, test000);
 
 	CLOVE_NOT_NULL(result);
-	CLOVE_STRING_EQ("test000", result->string);
+	CLOVE_STRING_EQ("000", result->string);
+	ll_string_item_list_free(&result);
 }
 
 CLOVE_TEST(FirstItemFrom2ItemList)
 {
-	string_item_t* test000 = ll_list_append_string(&my_linked_list, "test000");
-	string_item_t* test001 = ll_list_append_string(&my_linked_list, "test001");
-	string_item_t* result = ll_list_remove(&my_linked_list, test000);
+	ll_string_item* test000 = ll_list_append_string(&my_list, "000");
+	ll_string_item* test001 = ll_list_append_string(&my_list, "001");
+	ll_string_item* result = ll_remove(&my_list, test000);
 
-	CLOVE_NULL(result->next);
-	CLOVE_STRING_EQ("test001", my_linked_list->string);
+	CLOVE_NULL(result->node.next);
+	CLOVE_STRING_EQ("001", my_list->string);
+	ll_string_item_list_free(&result);
 }
 	
 CLOVE_TEST(MiddleItemFrom3ItemList)
 {
-	string_item_t* test000 = ll_list_append_string(&my_linked_list, "test000");
-	string_item_t* test001 = ll_list_append_string(&my_linked_list, "test001");
-	string_item_t* test002 = ll_list_append_string(&my_linked_list, "test002");
+	ll_string_item* test000 = ll_list_append_string(&my_list, "000");
+	ll_string_item* test001 = ll_list_append_string(&my_list, "001");
+	ll_string_item* test002 = ll_list_append_string(&my_list, "002");
 
-	ll_list_remove(&my_linked_list, test001);
+	ll_string_item* result = ll_remove(&my_list, test001);
 
-	string_item_t* result = ll_list_get_tail(&my_linked_list);
-
-	CLOVE_STRING_EQ("test000", my_linked_list->string);
-	CLOVE_STRING_EQ("test002", result->string);
+	CLOVE_PTR_EQ(test002, my_list->node.next);
+	ll_string_item_list_free(&result);
 }
-	
+
+
 
 
 
