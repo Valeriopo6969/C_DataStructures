@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{29a427d8-89b1-4d3d-9986-fe5b69581a7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clove.h">
@@ -38,32 +41,53 @@
     <ClCompile Include="main.c">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="test_correct_mem.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
     <ClCompile Include="test_dll_append.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_dll_remove.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_append.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_get_tail.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_pop.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_remove.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_ll_reverse.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="test_utils.c">
-      <Filter>File di origine</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_correct_mem.c">
-      <Filter>File di origine</Filter>
+    <ClCompile Include="test_dll_get_tail.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_pop.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_insert_after.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_insert_before.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_get_node_at.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_shuffle.c">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="test_dll_get_length.c">
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

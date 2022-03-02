@@ -4,7 +4,7 @@
 
 #include "linked_lists.h"
 
-ll_string_item* my_list;
+ll_string_item_t* my_list;
 
 
 
@@ -19,14 +19,14 @@ CLOVE_SUITE_TEARDOWN() {
 
 CLOVE_TEST(NullItemToEmptyList)
 {
-	ll_string_item* result = ll_append(&my_list, NULL);
+	ll_string_item_t* result = ll_append(&my_list, NULL);
 
 	CLOVE_NULL(result);
 }
 
 CLOVE_TEST(1Item)
 {
-	ll_string_item* result = ll_list_append_string(&my_list, "000");
+	ll_string_item_t* result = ll_list_append_string(&my_list, "000");
 	
 	
 	CLOVE_PTR_EQ(result, my_list);
@@ -36,9 +36,9 @@ CLOVE_TEST(1Item)
 
 CLOVE_TEST(3Item)
 {
-	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
-	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
-	ll_string_item* result2 = ll_list_append_string(&my_list, "002");
+	ll_string_item_t* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item_t* result1 = ll_list_append_string(&my_list, "001");
+	ll_string_item_t* result2 = ll_list_append_string(&my_list, "002");
 
 	CLOVE_PTR_EQ(result0, my_list);
 	CLOVE_PTR_EQ(result1, result0->node.next);

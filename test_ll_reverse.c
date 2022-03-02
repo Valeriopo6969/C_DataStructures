@@ -4,7 +4,7 @@
 
 #include "linked_lists.h"
 
-ll_string_item* my_list;
+ll_string_item_t* my_list;
 
 
 
@@ -36,8 +36,8 @@ CLOVE_TEST(1ItemList)
 
 CLOVE_TEST(2ItemList)
 {
-	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
-	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
+	ll_string_item_t* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item_t* result1 = ll_list_append_string(&my_list, "001");
 
 	ll_list_reverse(&my_list);
 
@@ -47,11 +47,11 @@ CLOVE_TEST(2ItemList)
 
 CLOVE_TEST(5ItemList)
 {
-	ll_string_item* result0 = ll_list_append_string(&my_list, "000");
-	ll_string_item* result1 = ll_list_append_string(&my_list, "001");
-	ll_string_item* result2 = ll_list_append_string(&my_list, "002");
-	ll_string_item* result3 = ll_list_append_string(&my_list, "003");
-	ll_string_item* result4 = ll_list_append_string(&my_list, "004");
+	ll_string_item_t* result0 = ll_list_append_string(&my_list, "000");
+	ll_string_item_t* result1 = ll_list_append_string(&my_list, "001");
+	ll_string_item_t* result2 = ll_list_append_string(&my_list, "002");
+	ll_string_item_t* result3 = ll_list_append_string(&my_list, "003");
+	ll_string_item_t* result4 = ll_list_append_string(&my_list, "004");
 
 	ll_list_reverse(&my_list);
 

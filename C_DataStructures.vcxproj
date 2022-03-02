@@ -149,8 +149,15 @@
     <ClCompile Include="linked_lists.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="test_correct_mem.c" />
+    <ClCompile Include="test_dll_get_length.c" />
+    <ClCompile Include="test_dll_get_node_at.c" />
+    <ClCompile Include="test_dll_insert_after.c" />
     <ClCompile Include="test_dll_append.c" />
+    <ClCompile Include="test_dll_get_tail.c" />
+    <ClCompile Include="test_dll_insert_before.c" />
+    <ClCompile Include="test_dll_pop.c" />
     <ClCompile Include="test_dll_remove.c" />
+    <ClCompile Include="test_dll_shuffle.c" />
     <ClCompile Include="test_ll_append.c" />
     <ClCompile Include="test_ll_get_tail.c" />
     <ClCompile Include="test_ll_pop.c">

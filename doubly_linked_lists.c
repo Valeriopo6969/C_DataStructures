@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-//#define TEST_DEBUG
+#define TEST_DEBUG
 #include "doubly_linked_lists.h"
 
-void dll_list_free(dll_node** head)
+void dll_list_free(dll_node_t** head)
 {
-	dll_string_item* to_free;
+	dll_string_item_t* to_free;
 	while ((to_free = dll_pop(head)))
 	{
 		free(to_free);
@@ -15,11 +15,11 @@ void dll_list_free(dll_node** head)
 	}
 }
 
-dll_node* dll_append(dll_node** head, dll_node* node)
+dll_node_t* dll_append(dll_node_t** head, dll_node_t* node)
 {
 	if (!node) return NULL;
 
-	dll_node* tail = dll_get_tail(head);
+	dll_node_t* tail = dll_get_tail(head);
 
 	if (!tail)
 	{
@@ -34,9 +34,9 @@ dll_node* dll_append(dll_node** head, dll_node* node)
 	return node;
 }
 
-dll_node* dll_get_tail(dll_node** head) {
+dll_node_t* dll_get_tail(dll_node_t** head) {
 
-	dll_node* current_node = *head;
+	dll_node_t* current_node = *head;
 	if (!current_node)
 	{
 		return NULL;
@@ -49,21 +49,24 @@ dll_node* dll_get_tail(dll_node** head) {
 	return current_node;
 }
 
-dll_node* dll_pop(dll_node** head)
+dll_node_t* dll_pop(dll_node_t** head)
 {
-	dll_node* current_node = *head;
+	dll_node_t* current_node = *head;
+	
 	if (!current_node)
 	{
 		return NULL;
 	}
 
 	*head = (*head)->next;
+	if(*head)
+		(*head)->prev = current_node->prev;
 	current_node->next = NULL;
 
 	return current_node;
 }
 
-dll_node* dll_remove(dll_node** head, dll_node* node)
+dll_node_t* dll_remove(dll_node_t** head, dll_node_t* node)
 {
 	if (!head || !node) return NULL;
 
@@ -83,50 +86,47 @@ dll_node* dll_remove(dll_node** head, dll_node* node)
 	return node;
 }
 
-dll_node* dll_get_node_at(dll_node** head, int index)
+dll_node_t* dll_get_node_at(dll_node_t* head, int index)
 {
-	dll_node* current_node = *head;
-	if (!current_node)
-	{
-		return NULL;
-	}
+	if (!head) return NULL; //u can't access a NULL pointer
 
-	while (current_node && index > 0)
+	while (head && index > 0)
 	{
 		index--;
-		current_node = current_node->next;
+		head = head->next;
 	}
 
 	if (index > 0) return NULL; //exceeded list max length
-	return current_node;
+	return head;
 }
 
-int dll_get_length(dll_node** head)
+int dll_get_length(dll_node_t* head)
 {
-	dll_node* current_node = *head;
+	
 	int counter = 0;
 
-	while (current_node)
+	while (head)
 	{
 		counter++;
 
-		current_node = current_node->next;
+		head = head->next;
 	}
 
 	return counter;
 }
 
-int dll_shuffle(dll_node** head)
+int dll_shuffle(dll_node_t** head)
 {
 	if (!(*head)) return 0;
 
-	int index = dll_get_length(head);
+	int index = 0;
+	index = dll_get_length((*head));
 
 	while (index > 0)
 	{
 		int node_at = custom_random(index);						//using a 'fake' random method to generate testable result
-		dll_node* item = dll_get_node_at(head, node_at);		// taking a node at random valid index
-		dll_node* item_removed = dll_remove(head, item);		// removing it from the list...
+		dll_node_t* item = dll_get_node_at((*head), node_at);	// taking a node at random valid index
+		dll_node_t* item_removed = dll_remove(head, item);		// removing it from the list...
 		dll_append(head, item_removed);							// ...then append it to the same list
 
 		index--;												//decreasing the index value so next time won't shuffle an already shuffled node
@@ -135,9 +135,14 @@ int dll_shuffle(dll_node** head)
 	return 1;
 }
 
-dll_node* dll_insert_after(dll_node* node, dll_node* node_to_insert)
+dll_node_t* dll_insert_after(dll_node_t* node, dll_node_t* node_to_insert)
 {
-	if (!node) return NULL; //u can't access a NULL pointer
+	if (!node)
+	{
+		free((dll_string_item_t*)node_to_insert);
+		node_to_insert = NULL;
+		return NULL;
+	}; //u can't access a NULL pointer
 
 	node_to_insert->next = node->next;
 
@@ -151,9 +156,14 @@ dll_node* dll_insert_after(dll_node* node, dll_node* node_to_insert)
 	return node_to_insert;
 }
 
-dll_node* dll_insert_before(dll_node* node, dll_node* node_to_insert)
+dll_node_t* dll_insert_before(dll_node_t** head, dll_node_t* node, dll_node_t* node_to_insert)
 {
-	if (!node) return NULL; //u can't access a NULL pointer
+	if (!node)
+	{
+		free((dll_string_item_t*)node_to_insert);
+		node_to_insert = NULL;
+		return NULL;
+	}; //u can't access a NULL pointer
 
 	node_to_insert->prev = node->prev;
 
@@ -163,13 +173,15 @@ dll_node* dll_insert_before(dll_node* node, dll_node* node_to_insert)
 
 	if (node_to_insert->prev)
 		node_to_insert->prev->next = node_to_insert;
+	else
+		*head = node_to_insert;
 
 	return node_to_insert;
 }
 
-dll_string_item* dll_string_item_new(const char* string)
+dll_string_item_t* dll_string_item_new(const char* string)
 {
-	dll_string_item* item = (dll_string_item*)malloc(sizeof(dll_string_item));
+	dll_string_item_t* item = (dll_string_item_t*)malloc(sizeof(dll_string_item_t));
 
 	if (!item)
 	{
