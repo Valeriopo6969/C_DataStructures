@@ -68,13 +68,13 @@ dll_node_t* dll_insert_before(dll_node_t** head, dll_node_t* node, dll_node_t* n
 /// <summary>
 ///  Returns the node that is at the requested index value of a list, range from 0-n
 /// </summary>
-/// <param name="head">: the "head" node of the list</param>
+/// <param name="head">: reference to the "head" node of the list</param>
 /// <param name="index">: the point were the node u are asking should be</param>
 /// <returns>
 /// The node u are asking for;
 /// <para>NULL if the index value is longer than the actual length of the list;</para>
 /// </returns>
-dll_node_t* dll_get_node_at(dll_node_t* head, int index);
+dll_node_t* dll_get_node_at(dll_node_t** head, int index);
 
 /// <summary>
 /// Shuffles, randomically, the order in which the list's nodes were previously appendend
@@ -92,6 +92,7 @@ int dll_shuffle(dll_node_t** head);
 /// <param name="head">: reference to the "head" node of the list</param>
 /// <returns>The number of elements that are on the requested list;</returns>
 int dll_get_length(dll_node_t** head);
+
 /// <summary>
 /// Allocates memory to instantiate a new dll_string_item* and assign to his .string field the string u passed in
 /// </summary>

@@ -20,9 +20,9 @@ CLOVE_TEST(2ItemList)
 	dll_append_string(&my_list, "000");
 	dll_append_string(&my_list, "001");
 
-	int result = dll_get_length(my_list);
+	int result = dll_get_length(&my_list);
 
-	CLOVE_INT_EQ(result, 2);
+	CLOVE_INT_EQ(2, result);
 }
 
 CLOVE_TEST(5ItemList)
@@ -33,7 +33,7 @@ CLOVE_TEST(5ItemList)
 	dll_append_string(&my_list, "003");
 	dll_append_string(&my_list, "004");
 
-	int result = dll_get_length(my_list);
+	int result = dll_get_length(&my_list);
 
-	CLOVE_INT_EQ(result, 5);
+	CLOVE_INT_EQ(5, result);
 }

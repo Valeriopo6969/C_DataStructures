@@ -24,10 +24,10 @@ CLOVE_TEST(Shuffle)
 
 	dll_shuffle(&my_list);
 
-	dll_string_item_t* result0 = dll_get_node_at(my_list, 0);
-	dll_string_item_t* result1 = dll_get_node_at(my_list, 1);
-	dll_string_item_t* result2 = dll_get_node_at(my_list, 2);
-	dll_string_item_t* result3 = dll_get_node_at(my_list, 3);
+	dll_string_item_t* result0 = dll_get_node_at(&my_list, 0);
+	dll_string_item_t* result1 = dll_get_node_at(&my_list, 1);
+	dll_string_item_t* result2 = dll_get_node_at(&my_list, 2);
+	dll_string_item_t* result3 = dll_get_node_at(&my_list, 3);
 
 	CLOVE_STRING_EQ("001", result0->string);
 	CLOVE_STRING_EQ("003", result1->string);

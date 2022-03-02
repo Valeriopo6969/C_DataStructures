@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
+#include <stddef.h> //required for NULL
 
-#define TEST_DEBUG
+#define TEST_DEBUG //required to test correct memory allocation and free
 #include "linked_lists.h"
 
 void ll_list_free(ll_node_t** head)
@@ -12,14 +10,14 @@ void ll_list_free(ll_node_t** head)
 	{
 		free(to_free);
 		to_free = NULL;
-		
+
 	}
 }
 
- ll_node_t* ll_get_tail(ll_node_t**head)
+ll_node_t* ll_get_tail(ll_node_t** head)
 {
-	 ll_node_t* current_node = *head;
-	 ll_node_t* last_node = NULL;
+	ll_node_t* current_node = *head;
+	ll_node_t* last_node = NULL;
 
 	while (current_node)
 	{
@@ -30,7 +28,7 @@ void ll_list_free(ll_node_t** head)
 	return last_node;
 };
 
- ll_node_t* ll_pop(ll_node_t** head)
+ll_node_t* ll_pop(ll_node_t** head)
 {
 	ll_node_t* current_node = *head;
 	if (!current_node)
@@ -44,7 +42,7 @@ void ll_list_free(ll_node_t** head)
 	return current_node;
 }
 
-ll_node_t* ll_append(ll_node_t** head,  ll_node_t* item)
+ll_node_t* ll_append(ll_node_t** head, ll_node_t* item)
 {
 	if (!item) return NULL;
 
@@ -124,6 +122,8 @@ ll_string_item_t* ll_string_item_new(const char* string)
 	item->string = string;
 	return item;
 }
+
+
 
 
 		

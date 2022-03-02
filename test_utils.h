@@ -2,7 +2,7 @@
 
 extern int mem_malloc_count;
 
-#ifdef TEST_DEBUG
+#ifdef TEST_DEBUG 
 	#define malloc mem_malloc
 	#define free mem_free
 #endif

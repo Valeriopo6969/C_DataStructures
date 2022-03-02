@@ -1,8 +1,6 @@
-#include <stddef.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <stddef.h> //required for NULL
 
-#define TEST_DEBUG
+#define TEST_DEBUG  //required to test correct memory allocation and free
 #include "doubly_linked_lists.h"
 
 void dll_list_free(dll_node_t** head)
@@ -52,14 +50,14 @@ dll_node_t* dll_get_tail(dll_node_t** head) {
 dll_node_t* dll_pop(dll_node_t** head)
 {
 	dll_node_t* current_node = *head;
-	
+
 	if (!current_node)
 	{
 		return NULL;
 	}
 
 	*head = (*head)->next;
-	if(*head)
+	if (*head)
 		(*head)->prev = current_node->prev;
 	current_node->next = NULL;
 
@@ -86,30 +84,31 @@ dll_node_t* dll_remove(dll_node_t** head, dll_node_t* node)
 	return node;
 }
 
-dll_node_t* dll_get_node_at(dll_node_t* head, int index)
+dll_node_t* dll_get_node_at(dll_node_t** head, int index)
 {
-	if (!head) return NULL; //u can't access a NULL pointer
+	dll_node_t* current_node = *head;
+	if (!current_node) return NULL; //u can't access a NULL pointer
 
-	while (head && index > 0)
+	while (current_node && index > 0)
 	{
 		index--;
-		head = head->next;
+		current_node = current_node->next;
 	}
 
 	if (index > 0) return NULL; //exceeded list max length
-	return head;
+	return current_node;
 }
 
-int dll_get_length(dll_node_t* head)
+int dll_get_length(dll_node_t** head)
 {
-	
+	dll_node_t* current_node = *head;
 	int counter = 0;
 
-	while (head)
+	while (current_node)
 	{
 		counter++;
 
-		head = head->next;
+		current_node = current_node->next;
 	}
 
 	return counter;
@@ -120,12 +119,12 @@ int dll_shuffle(dll_node_t** head)
 	if (!(*head)) return 0;
 
 	int index = 0;
-	index = dll_get_length((*head));
+	index = dll_get_length(head);
 
 	while (index > 0)
 	{
 		int node_at = custom_random(index);						//using a 'fake' random method to generate testable result
-		dll_node_t* item = dll_get_node_at((*head), node_at);	// taking a node at random valid index
+		dll_node_t* item = dll_get_node_at(head, node_at);		// taking a node at random valid index
 		dll_node_t* item_removed = dll_remove(head, item);		// removing it from the list...
 		dll_append(head, item_removed);							// ...then append it to the same list
 
@@ -191,6 +190,7 @@ dll_string_item_t* dll_string_item_new(const char* string)
 	item->string = string;
 	return item;
 }
+
 
 
 
