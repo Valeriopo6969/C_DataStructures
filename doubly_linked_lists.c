@@ -123,12 +123,12 @@ int dll_shuffle(dll_node_t** head)
 
 	while (index > 0)
 	{
-		int node_at = custom_random(index);						//using a 'fake' random method to generate testable result
+		int node_at = custom_random(index);				//using a 'fake' random method to generate testable result
 		dll_node_t* item = dll_get_node_at(head, node_at);		// taking a node at random valid index
 		dll_node_t* item_removed = dll_remove(head, item);		// removing it from the list...
-		dll_append(head, item_removed);							// ...then append it to the same list
+		dll_append(head, item_removed);					// ...then append it to the same list
 
-		index--;												//decreasing the index value so next time won't shuffle an already shuffled node
+		index--;							//decreasing the index value so next time won't shuffle an already shuffled node
 	}
 
 	return 1;
