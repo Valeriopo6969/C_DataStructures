@@ -15,7 +15,7 @@ CLOVE_SUITE_TEARDOWN() {
 	dll_string_item_list_free(&my_list);
 }
 
-CLOVE_TEST(Shuffle) 
+CLOVE_TEST(Shuffle) //in order to reproduce testable results i'm using a custom random function: check the header file for more info
 {
 	dll_append_string(&my_list, "000");
 	dll_append_string(&my_list, "001");
