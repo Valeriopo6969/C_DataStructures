@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\utils\include;C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\core\include;C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\tests\include;$(IncludePath)</IncludePath>
+    <ExecutablePath>C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\utils\src;C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\tests\src;C:\Users\Valerio er Pazzo\source\repos\C_DataStructures\core\src;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -139,33 +141,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="clove.h" />
-    <ClInclude Include="doubly_linked_lists.h" />
-    <ClInclude Include="linked_lists.h" />
-    <ClInclude Include="test_utils.h" />
+    <ClInclude Include="tests\include\clove.h" />
+    <ClInclude Include="utils\include\test_utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="doubly_linked_lists.c" />
-    <ClCompile Include="linked_lists.c" />
-    <ClCompile Include="main.c" />
-    <ClCompile Include="test_correct_mem.c" />
-    <ClCompile Include="test_dll_get_length.c" />
-    <ClCompile Include="test_dll_get_node_at.c" />
-    <ClCompile Include="test_dll_insert_after.c" />
-    <ClCompile Include="test_dll_append.c" />
-    <ClCompile Include="test_dll_get_tail.c" />
-    <ClCompile Include="test_dll_insert_before.c" />
-    <ClCompile Include="test_dll_pop.c" />
-    <ClCompile Include="test_dll_remove.c" />
-    <ClCompile Include="test_dll_shuffle.c" />
-    <ClCompile Include="test_ll_append.c" />
-    <ClCompile Include="test_ll_get_tail.c" />
-    <ClCompile Include="test_ll_pop.c">
+    <ClCompile Include="core\src\doubly_linked_lists.c" />
+    <ClCompile Include="core\src\linked_lists.c" />
+    <ClCompile Include="tests\src\main.c" />
+    <ClCompile Include="tests\src\test_correct_mem.c" />
+    <ClCompile Include="tests\src\test_dll_get_length.c" />
+    <ClCompile Include="tests\src\test_dll_get_node_at.c" />
+    <ClCompile Include="tests\src\test_dll_insert_after.c" />
+    <ClCompile Include="tests\src\test_dll_append.c" />
+    <ClCompile Include="tests\src\test_dll_get_tail.c" />
+    <ClCompile Include="tests\src\test_dll_insert_before.c" />
+    <ClCompile Include="tests\src\test_dll_pop.c" />
+    <ClCompile Include="tests\src\test_dll_remove.c" />
+    <ClCompile Include="tests\src\test_dll_shuffle.c" />
+    <ClCompile Include="tests\src\test_ll_append.c" />
+    <ClCompile Include="tests\src\test_ll_get_tail.c" />
+    <ClCompile Include="tests\src\test_ll_pop.c">
       <DeploymentContent>true</DeploymentContent>
     </ClCompile>
-    <ClCompile Include="test_ll_remove.c" />
-    <ClCompile Include="test_ll_reverse.c" />
-    <ClCompile Include="test_utils.c" />
+    <ClCompile Include="tests\src\test_ll_remove.c" />
+    <ClCompile Include="tests\src\test_ll_reverse.c" />
+    <ClCompile Include="utils\src\test_utils.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

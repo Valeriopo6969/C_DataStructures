@@ -18,75 +18,69 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clove.h">
+    <ClInclude Include="utils\include\test_utils.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
-    <ClInclude Include="doubly_linked_lists.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="linked_lists.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="test_utils.h">
+    <ClInclude Include="tests\include\clove.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="doubly_linked_lists.c">
+    <ClCompile Include="core\src\doubly_linked_lists.c">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="linked_lists.c">
+    <ClCompile Include="core\src\linked_lists.c">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="tests\src\main.c">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="test_correct_mem.c">
+    <ClCompile Include="tests\src\test_correct_mem.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_append.c">
+    <ClCompile Include="tests\src\test_dll_append.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_remove.c">
+    <ClCompile Include="tests\src\test_dll_remove.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_ll_append.c">
+    <ClCompile Include="tests\src\test_ll_append.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_ll_get_tail.c">
+    <ClCompile Include="tests\src\test_ll_get_tail.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_ll_pop.c">
+    <ClCompile Include="tests\src\test_ll_pop.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_ll_remove.c">
+    <ClCompile Include="tests\src\test_ll_remove.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_ll_reverse.c">
+    <ClCompile Include="tests\src\test_ll_reverse.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_get_tail.c">
+    <ClCompile Include="tests\src\test_dll_get_tail.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_pop.c">
+    <ClCompile Include="tests\src\test_dll_pop.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_insert_after.c">
+    <ClCompile Include="tests\src\test_dll_insert_after.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_insert_before.c">
+    <ClCompile Include="tests\src\test_dll_insert_before.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_get_node_at.c">
+    <ClCompile Include="tests\src\test_dll_get_node_at.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_shuffle.c">
+    <ClCompile Include="tests\src\test_dll_shuffle.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_dll_get_length.c">
+    <ClCompile Include="tests\src\test_dll_get_length.c">
       <Filter>Tests</Filter>
     </ClCompile>
-    <ClCompile Include="test_utils.c">
+    <ClCompile Include="utils\src\test_utils.c">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
